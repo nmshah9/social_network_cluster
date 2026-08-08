@@ -17,6 +17,7 @@ Tabs:
 
 import os
 import sys
+import subprocess
 
 import joblib
 import numpy as np
@@ -444,6 +445,10 @@ elif page == "Predict a Student":
                 with c2:
                     top_words = profile.loc[cluster_pred].sort_values(ascending=False).head(8)
                     st.bar_chart(top_words)
+
+# Check if trained model exists
+if not os.path.exists("models/student_segment_model.pkl"):
+    subprocess.run(["python", "run_pipeline.py"])
 
 # ============================================================
 # FOOTER
