@@ -61,7 +61,17 @@ st.set_page_config(page_title="Student Social Network Clustering", layout="wide"
 BANNER_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "banner.png")
 if os.path.exists(BANNER_PATH):
     st.image(BANNER_PATH, width="stretch")
+# ============================================================
+# LOAD BANNER
+# ============================================================
 
+banner = Image.open("banner.png")
+
+# ============================================================
+# DISPLAY BANNER
+# ============================================================
+
+st.image(banner, use_container_width=True)
 
 # ---------------------------------------------------------------------------
 # Cached data / model loading
@@ -434,3 +444,19 @@ elif page == "Predict a Student":
                 with c2:
                     top_words = profile.loc[cluster_pred].sort_values(ascending=False).head(8)
                     st.bar_chart(top_words)
+
+# ============================================================
+# FOOTER
+# ============================================================
+
+st.markdown("---")
+
+st.markdown("""
+<div style='text-align: center;'>
+
+### 🌍 Student Socail Network Profile Cluster using Machine Learning
+
+Built with ❤️ using Streamlit | Developed by nmshah9
+
+</div>
+""", unsafe_allow_html=True)
