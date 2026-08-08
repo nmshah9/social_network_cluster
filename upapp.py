@@ -59,10 +59,7 @@ st.set_page_config(page_title="Student Social Network Clustering", layout="wide"
 # ---------------------------------------------------------------------------
 # Banner (shown at the top of every page)
 # ---------------------------------------------------------------------------
-BANNER_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "banner.png")
-if os.path.exists(BANNER_PATH):
-    st.image(BANNER_PATH, width="stretch")
-    
+   
 banner = Image.open(BANNER_PATH)
 original_width, original_height = banner.size
 
