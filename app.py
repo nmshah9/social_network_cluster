@@ -384,6 +384,10 @@ elif page == "Cluster Profiles":
 # ---------------------------------------------------------------------------
 # 6. Predict a Student
 # ---------------------------------------------------------------------------
+# Check if trained model exists
+if not os.path.exists("models/student_segment_model.pkl"):
+    subprocess.run(["python", "run_pipeline.py"])
+    
 elif page == "Predict a Student":
     st.title("Predict a New Student's Segment")
     artifacts = get_trained_artifacts()
@@ -446,11 +450,6 @@ elif page == "Predict a Student":
                     top_words = profile.loc[cluster_pred].sort_values(ascending=False).head(8)
                     st.bar_chart(top_words)
 
-# postBuild
-if not os.path.exists("models/student_segment_model.pkl"):
-    st.warning("No trained model found. Training now...")
-    import subprocess
-    subprocess.run(["python", "run_pipeline.py"])
 
 # ============================================================
 # FOOTER
