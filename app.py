@@ -384,9 +384,6 @@ elif page == "Cluster Profiles":
 # ---------------------------------------------------------------------------
 # 6. Predict a Student
 # ---------------------------------------------------------------------------
-# Check if trained model exists
-if not os.path.exists("models/student_segment_model.pkl"):
-    subprocess.run(["python", "run_pipeline.py"])
     
 elif page == "Predict a Student":
     st.title("Predict a New Student's Segment")
