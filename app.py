@@ -22,7 +22,7 @@ import joblib
 import numpy as np
 import pandas as pd
 import streamlit as st
-
+from PIL import Image
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from src import config, eda
