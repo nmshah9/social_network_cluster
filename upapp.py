@@ -63,16 +63,6 @@ BANNER_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets",
 if os.path.exists(BANNER_PATH):
     st.image(BANNER_PATH, width="stretch")
 
-# ============================================================
-# LOAD BANNER
-# ============================================================
-
-banner = Image.open("banner.png")
-original_width, original_height = banner.size
-
-# Reduce width by 30%
-new_width = int(original_width * 0.7)
-st.image(banner, width=new_width)
 
 # ============================================================
 # DISPLAY BANNER
