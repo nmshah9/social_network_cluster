@@ -22,6 +22,7 @@ import joblib
 import numpy as np
 import pandas as pd
 import streamlit as st
+from PIL import Image
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
@@ -62,6 +63,22 @@ BANNER_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets",
 if os.path.exists(BANNER_PATH):
     st.image(BANNER_PATH, width="stretch")
 
+# ============================================================
+# LOAD BANNER
+# ============================================================
+
+banner = Image.open("banner.png")
+original_width, original_height = banner.size
+
+# Reduce width by 30%
+new_width = int(original_width * 0.7)
+st.image(banner, width=new_width)
+
+# ============================================================
+# DISPLAY BANNER
+# ============================================================
+
+st.image(banner, use_container_width=True)
 
 # ---------------------------------------------------------------------------
 # Cached data / model loading
@@ -463,3 +480,19 @@ elif page == "Predict a Student":
                 with c2:
                     top_words = profile.loc[cluster_pred].sort_values(ascending=False).head(8)
                     st.bar_chart(top_words)
+
+# ============================================================
+# FOOTER
+# ============================================================
+
+st.markdown("---")
+
+st.markdown("""
+<div style='text-align: center;'>
+
+### 🌍 Student Socail Network Profile Cluster using Machine Learning
+
+Built with ❤️ using Streamlit | Developed by nmshah9
+
+</div>
+""", unsafe_allow_html=True)
