@@ -447,7 +447,10 @@ elif page == "Predict a Student":
                     st.bar_chart(top_words)
 
 # postBuild
-python run_pipeline.py
+if not os.path.exists("models/student_segment_model.pkl"):
+    st.warning("No trained model found. Training now...")
+    import subprocess
+    subprocess.run(["python", "run_pipeline.py"])
 
 # ============================================================
 # FOOTER
